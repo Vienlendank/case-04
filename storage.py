@@ -17,12 +17,9 @@ def submission_id(record: Mapping[str, Any]) -> str:
     return hash_value(raw)
 
 def append_json_line(record: Mapping[str, Any]) -> None:
-
-    if "email" in rec:
-        rec["email"] = hash_value(rec["email"])
-    if "age" in rec:
-        rec["age"] = hash_value(str(rec["age"]))
-
+    
+    rec["email"] = hash_value(rec["email"])
+    rec["age"] = hash_value(str(rec["age"]))
     rec["submission_id"] = submission_id(rec)
 
     RESULTS_PATH.parent.mkdir(parents=True, exist_ok=True)
