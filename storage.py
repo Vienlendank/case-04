@@ -18,9 +18,9 @@ def submission_id(record: Mapping[str, Any]) -> str:
 
 def append_json_line(record: Mapping[str, Any]) -> None:
     
-    rec["email"] = hash_value(rec["email"])
-    rec["age"] = hash_value(str(rec["age"]))
-    rec["submission_id"] = submission_id(rec)
+    record["email"] = hash_value(record["email"])
+    record["age"] = hash_value(str(record["age"]))
+    record["submission_id"] = submission_id(record)
 
     RESULTS_PATH.parent.mkdir(parents=True, exist_ok=True)
     with RESULTS_PATH.open("a", encoding="utf-8") as f:
